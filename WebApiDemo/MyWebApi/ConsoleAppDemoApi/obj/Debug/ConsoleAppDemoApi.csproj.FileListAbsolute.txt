@@ -1,0 +1,12 @@
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\ConsoleAppDemoApi.exe.config
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\ConsoleAppDemoApi.exe
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\ConsoleAppDemoApi.pdb
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\Newtonsoft.Json.dll
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\System.Net.Http.Formatting.dll
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\Newtonsoft.Json.xml
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\bin\Debug\System.Net.Http.Formatting.xml
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\obj\Debug\ConsoleAppDemoApi.csprojAssemblyReference.cache
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\obj\Debug\ConsoleAppDemoApi.csproj.CoreCompileInputs.cache
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\obj\Debug\ConsoleAppDemoApi.csproj.CopyComplete
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\obj\Debug\ConsoleAppDemoApi.exe
+E:\code Web\API\WebApiDemo\MyWebApi\ConsoleAppDemoApi\obj\Debug\ConsoleAppDemoApi.pdb

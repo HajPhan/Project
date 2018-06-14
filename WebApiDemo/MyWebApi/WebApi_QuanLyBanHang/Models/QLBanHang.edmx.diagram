@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e1f6f9095bb4198a4ebec3833e37a47" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="QLBANHANGModel.CTCN" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.CTDH" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.CTPN" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.CTPQ" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.CTPX" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.DONDH" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.LOAISP" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.NHACC" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.NHASX" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.PHANQUYEN" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.PHIEUNHAP" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.PHIEUXUAT" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.SANPHAM" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.TAIKHOAN" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.TONKHO" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachDonDatHang" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachDonDh" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachKhachHang" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachLoaiSanPham" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachNhaCungCap" Width="1.5" PointX="11.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachNhanVien" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachNhaSanXuat" Width="1.5" PointX="11.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachPhieuNhap" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachPhieuXuat" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_DanhSachSanPhams" Width="1.5" PointX="11.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_NhaCungCap" Width="1.5" PointX="13.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_PhieuXuatKhachHang" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBANHANGModel.vw_ThongKeDonDatHang" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTDH_DONDH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTDH_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTPN_PHIEUNHAP" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTPN_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTPQ_PHANQUYEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTPQ_TAIKHOAN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTPX_PHIEUXUAT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_CTPX_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_DONDH_NHACC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_DONDH_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_PHIEUXUAT_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_SANPHAM_LOAISP" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_PHIEUNHAP_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_PHIEUXUAT_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_TAIKHOAN_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_SANPHAM_NHASX" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBANHANGModel.FRK_TONKHO_SANPHAM" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

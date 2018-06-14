@@ -1,0 +1,65 @@
+﻿@*@model IEnumerable<WebApi_QuanLyBanHang.Models.NhaSanXuatViewModel>*@
+@model PagedList<WebApi_QuanLyBanHang.Models.NhaSanXuatViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayouAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MASX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TENSX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().QUOCGIA)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MASX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUOCGIA)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="pagination" id="tab">
+    trang @(Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+<style>
+    .pagination li {
+        display: inline;
+    }
+
+    #tab {
+        text-align: right;
+    }
+</style>

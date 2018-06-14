@@ -1,0 +1,1467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLBANHANGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CTCN">
+    <Key>
+      <PropertyRef Name="MAQH" />
+    </Key>
+    <Property Name="MAQH" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DANHMUC" Type="Boolean" />
+    <Property Name="QUANLYBANHANG" Type="Boolean" />
+    <Property Name="THONGKE" Type="Boolean" />
+    <Property Name="SAOLUU" Type="Boolean" />
+    <Property Name="HELP" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CTDH">
+    <Key>
+      <PropertyRef Name="MADH" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MADH" Type="Int32" Nullable="false" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="SLDH" Type="Int32" />
+    <NavigationProperty Name="DONDH" Relationship="Self.FRK_CTDH_DONDH" FromRole="CTDH" ToRole="DONDH" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FRK_CTDH_SANPHAM" FromRole="CTDH" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="CTPN">
+    <Key>
+      <PropertyRef Name="MAPN" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAPN" Type="Int32" Nullable="false" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="SLN" Type="Int32" />
+    <Property Name="DONGIA" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="PHIEUNHAP" Relationship="Self.FRK_CTPN_PHIEUNHAP" FromRole="CTPN" ToRole="PHIEUNHAP" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FRK_CTPN_SANPHAM" FromRole="CTPN" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="CTPQ">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="MAQH" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="MAQH" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PHANQUYEN" Relationship="Self.FRK_CTPQ_PHANQUYEN" FromRole="CTPQ" ToRole="PHANQUYEN" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.FRK_CTPQ_TAIKHOAN" FromRole="CTPQ" ToRole="TAIKHOAN" />
+  </EntityType>
+  <EntityType Name="CTPX">
+    <Key>
+      <PropertyRef Name="MAPX" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAPX" Type="Int32" Nullable="false" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="SLX" Type="Int32" />
+    <Property Name="PHANTRAM" Type="Single" />
+    <Property Name="THANHTIEN" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FRK_CTPX_PHIEUXUAT" FromRole="CTPX" ToRole="PHIEUXUAT" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FRK_CTPX_SANPHAM" FromRole="CTPX" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="DONDH">
+    <Key>
+      <PropertyRef Name="MADH" />
+    </Key>
+    <Property Name="MADH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="MACC" Type="Int32" />
+    <Property Name="NGDH" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CTDHs" Relationship="Self.FRK_CTDH_DONDH" FromRole="DONDH" ToRole="CTDH" />
+    <NavigationProperty Name="NHACC" Relationship="Self.FRK_DONDH_NHACC" FromRole="DONDH" ToRole="NHACC" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_DONDH_NHANVIEN" FromRole="DONDH" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GT" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYDK" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FRK_PHIEUXUAT_KHACHHANG" FromRole="KHACHHANG" ToRole="PHIEUXUAT" />
+  </EntityType>
+  <EntityType Name="LOAISP">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DVT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="SANPHAMs" Relationship="Self.FRK_SANPHAM_LOAISP" FromRole="LOAISP" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="NHACC">
+    <Key>
+      <PropertyRef Name="MACC" />
+    </Key>
+    <Property Name="MACC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <NavigationProperty Name="DONDHs" Relationship="Self.FRK_DONDH_NHACC" FromRole="NHACC" ToRole="DONDH" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GT" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYLAM" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DONDHs" Relationship="Self.FRK_DONDH_NHANVIEN" FromRole="NHANVIEN" ToRole="DONDH" />
+    <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FRK_PHIEUNHAP_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUNHAP" />
+    <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FRK_PHIEUXUAT_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUXUAT" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.FRK_TAIKHOAN_NHANVIEN" FromRole="NHANVIEN" ToRole="TAIKHOAN" />
+  </EntityType>
+  <EntityType Name="NHASX">
+    <Key>
+      <PropertyRef Name="MASX" />
+    </Key>
+    <Property Name="MASX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QUOCGIA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SANPHAMs" Relationship="Self.FRK_SANPHAM_NHASX" FromRole="NHASX" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="PHANQUYEN">
+    <Key>
+      <PropertyRef Name="MAQH" />
+    </Key>
+    <Property Name="MAQH" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TENQH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTPQs" Relationship="Self.FRK_CTPQ_PHANQUYEN" FromRole="PHANQUYEN" ToRole="CTPQ" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPN" />
+    </Key>
+    <Property Name="MAPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="NGAYNHAP" Type="DateTime" Precision="0" />
+    <Property Name="MADH" Type="Int32" />
+    <NavigationProperty Name="CTPNs" Relationship="Self.FRK_CTPN_PHIEUNHAP" FromRole="PHIEUNHAP" ToRole="CTPN" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_PHIEUNHAP_NHANVIEN" FromRole="PHIEUNHAP" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="PHIEUXUAT">
+    <Key>
+      <PropertyRef Name="MAPX" />
+    </Key>
+    <Property Name="MAPX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="NGAYXUAT" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CTPXes" Relationship="Self.FRK_CTPX_PHIEUXUAT" FromRole="PHIEUXUAT" ToRole="CTPX" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FRK_PHIEUXUAT_KHACHHANG" FromRole="PHIEUXUAT" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_PHIEUXUAT_NHANVIEN" FromRole="PHIEUXUAT" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MASX" Type="Int32" />
+    <Property Name="MALOAI" Type="Int32" />
+    <Property Name="GIATHANH" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="CTDHs" Relationship="Self.FRK_CTDH_SANPHAM" FromRole="SANPHAM" ToRole="CTDH" />
+    <NavigationProperty Name="CTPNs" Relationship="Self.FRK_CTPN_SANPHAM" FromRole="SANPHAM" ToRole="CTPN" />
+    <NavigationProperty Name="CTPXes" Relationship="Self.FRK_CTPX_SANPHAM" FromRole="SANPHAM" ToRole="CTPX" />
+    <NavigationProperty Name="LOAISP" Relationship="Self.FRK_SANPHAM_LOAISP" FromRole="SANPHAM" ToRole="LOAISP" />
+    <NavigationProperty Name="NHASX" Relationship="Self.FRK_SANPHAM_NHASX" FromRole="SANPHAM" ToRole="NHASX" />
+    <NavigationProperty Name="TONKHOes" Relationship="Self.FRK_TONKHO_SANPHAM" FromRole="SANPHAM" ToRole="TONKHO" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="Int32" />
+    <NavigationProperty Name="CTPQs" Relationship="Self.FRK_CTPQ_TAIKHOAN" FromRole="TAIKHOAN" ToRole="CTPQ" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FRK_TAIKHOAN_NHANVIEN" FromRole="TAIKHOAN" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="TONKHO">
+    <Key>
+      <PropertyRef Name="MONTH_YEAR" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MONTH_YEAR" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TONGSLD" Type="Int32" />
+    <Property Name="TONGSLN" Type="Int32" />
+    <Property Name="TONGSLX" Type="Int32" />
+    <Property Name="TONGSLT" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FRK_TONKHO_SANPHAM" FromRole="TONKHO" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachDonDatHang">
+    <Key>
+      <PropertyRef Name="MADH" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MADH" Type="Int32" Nullable="false" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="MACC" Type="Int32" />
+    <Property Name="NGDH" Type="DateTime" Precision="3" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SLDH" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachDonDh">
+    <Key>
+      <PropertyRef Name="MADH" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MADH" Type="Int32" Nullable="false" />
+    <Property Name="NGDH" Type="DateTime" Precision="3" />
+    <Property Name="SLDH" Type="Int32" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachKhachHang">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GT" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYDK" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachLoaiSanPham">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DVT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachNhaCungCap">
+    <Key>
+      <PropertyRef Name="MACC" />
+    </Key>
+    <Property Name="MACC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachNhanVien">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GT" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYLAM" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachNhaSanXuat">
+    <Key>
+      <PropertyRef Name="MASX" />
+    </Key>
+    <Property Name="MASX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QUOCGIA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachPhieuNhap">
+    <Key>
+      <PropertyRef Name="MAPN" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAPN" Type="Int32" Nullable="false" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="NGAYNHAP" Type="DateTime" Precision="0" />
+    <Property Name="MADH" Type="Int32" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SLN" Type="Int32" />
+    <Property Name="DONGIA" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachPhieuXuat">
+    <Key>
+      <PropertyRef Name="MAPX" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAPX" Type="Int32" Nullable="false" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="NGAYXUAT" Type="DateTime" Precision="0" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SLX" Type="Int32" />
+    <Property Name="PHANTRAM" Type="Single" />
+    <Property Name="THANHTIEN" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIATHANH" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vw_DanhSachSanPhams">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIATHANH" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OCUNG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CARDMANHINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MANHINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PORTCONNECT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AMTHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIAQUANG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIAOTIEPMANG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WEBCAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PIN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TRONGLUONG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BAOHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_NhaCungCap">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SLDH" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_PhieuXuatKhachHang">
+    <Key>
+      <PropertyRef Name="MAPX" />
+    </Key>
+    <Property Name="MAPX" Type="Int32" Nullable="false" />
+    <Property Name="NGAYXUAT" Type="DateTime" Precision="0" />
+    <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SLX" Type="Int32" />
+    <Property Name="GIATHANH" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TONGTIEN" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PHANTRAM" Type="Single" />
+    <Property Name="THANHTIEN" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vw_ThongKeDonDatHang">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="Int32" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TENSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SLDH" Type="Int32" />
+  </EntityType>
+  <Association Name="FRK_CTDH_DONDH">
+    <End Role="DONDH" Type="Self.DONDH" Multiplicity="1" />
+    <End Role="CTDH" Type="Self.CTDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONDH">
+        <PropertyRef Name="MADH" />
+      </Principal>
+      <Dependent Role="CTDH">
+        <PropertyRef Name="MADH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTDH_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTDH" Type="Self.CTDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTDH">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPN_PHIEUNHAP">
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUNHAP">
+        <PropertyRef Name="MAPN" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MAPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPN_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPQ_PHANQUYEN">
+    <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="1" />
+    <End Role="CTPQ" Type="Self.CTPQ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHANQUYEN">
+        <PropertyRef Name="MAQH" />
+      </Principal>
+      <Dependent Role="CTPQ">
+        <PropertyRef Name="MAQH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPQ_TAIKHOAN">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="1" />
+    <End Role="CTPQ" Type="Self.CTPQ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CTPQ">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPX_PHIEUXUAT">
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
+    <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUXUAT">
+        <PropertyRef Name="MAPX" />
+      </Principal>
+      <Dependent Role="CTPX">
+        <PropertyRef Name="MAPX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_CTPX_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTPX">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DONDH_NHACC">
+    <End Role="NHACC" Type="Self.NHACC" Multiplicity="0..1" />
+    <End Role="DONDH" Type="Self.DONDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACC">
+        <PropertyRef Name="MACC" />
+      </Principal>
+      <Dependent Role="DONDH">
+        <PropertyRef Name="MACC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_DONDH_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="DONDH" Type="Self.DONDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="DONDH">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUXUAT_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_LOAISP">
+    <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAISP">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MALOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUNHAP_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_PHIEUXUAT_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_TAIKHOAN_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="TAIKHOAN">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_SANPHAM_NHASX">
+    <End Role="NHASX" Type="Self.NHASX" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHASX">
+        <PropertyRef Name="MASX" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MASX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FRK_TONKHO_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="TONKHO">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLBANHANGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CTCNs" EntityType="Self.CTCN" />
+    <EntitySet Name="CTDHs" EntityType="Self.CTDH" />
+    <EntitySet Name="CTPNs" EntityType="Self.CTPN" />
+    <EntitySet Name="CTPQs" EntityType="Self.CTPQ" />
+    <EntitySet Name="CTPXes" EntityType="Self.CTPX" />
+    <EntitySet Name="DONDHs" EntityType="Self.DONDH" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAISPs" EntityType="Self.LOAISP" />
+    <EntitySet Name="NHACCs" EntityType="Self.NHACC" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="NHASXes" EntityType="Self.NHASX" />
+    <EntitySet Name="PHANQUYENs" EntityType="Self.PHANQUYEN" />
+    <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
+    <EntitySet Name="PHIEUXUATs" EntityType="Self.PHIEUXUAT" />
+    <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+    <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
+    <EntitySet Name="vw_DanhSachDonDatHang" EntityType="Self.vw_DanhSachDonDatHang" />
+    <EntitySet Name="vw_DanhSachDonDh" EntityType="Self.vw_DanhSachDonDh" />
+    <EntitySet Name="vw_DanhSachKhachHang" EntityType="Self.vw_DanhSachKhachHang" />
+    <EntitySet Name="vw_DanhSachLoaiSanPham" EntityType="Self.vw_DanhSachLoaiSanPham" />
+    <EntitySet Name="vw_DanhSachNhaCungCap" EntityType="Self.vw_DanhSachNhaCungCap" />
+    <EntitySet Name="vw_DanhSachNhanVien" EntityType="Self.vw_DanhSachNhanVien" />
+    <EntitySet Name="vw_DanhSachNhaSanXuat" EntityType="Self.vw_DanhSachNhaSanXuat" />
+    <EntitySet Name="vw_DanhSachPhieuNhap" EntityType="Self.vw_DanhSachPhieuNhap" />
+    <EntitySet Name="vw_DanhSachPhieuXuat" EntityType="Self.vw_DanhSachPhieuXuat" />
+    <EntitySet Name="vw_DanhSachSanPhams" EntityType="Self.vw_DanhSachSanPhams" />
+    <EntitySet Name="vw_NhaCungCap" EntityType="Self.vw_NhaCungCap" />
+    <EntitySet Name="vw_PhieuXuatKhachHang" EntityType="Self.vw_PhieuXuatKhachHang" />
+    <EntitySet Name="vw_ThongKeDonDatHang" EntityType="Self.vw_ThongKeDonDatHang" />
+    <AssociationSet Name="FRK_CTDH_DONDH" Association="Self.FRK_CTDH_DONDH">
+      <End Role="DONDH" EntitySet="DONDHs" />
+      <End Role="CTDH" EntitySet="CTDHs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTDH_SANPHAM" Association="Self.FRK_CTDH_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTDH" EntitySet="CTDHs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPN_PHIEUNHAP" Association="Self.FRK_CTPN_PHIEUNHAP">
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPN_SANPHAM" Association="Self.FRK_CTPN_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPQ_PHANQUYEN" Association="Self.FRK_CTPQ_PHANQUYEN">
+      <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
+      <End Role="CTPQ" EntitySet="CTPQs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPQ_TAIKHOAN" Association="Self.FRK_CTPQ_TAIKHOAN">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+      <End Role="CTPQ" EntitySet="CTPQs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPX_PHIEUXUAT" Association="Self.FRK_CTPX_PHIEUXUAT">
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+      <End Role="CTPX" EntitySet="CTPXes" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_CTPX_SANPHAM" Association="Self.FRK_CTPX_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTPX" EntitySet="CTPXes" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DONDH_NHACC" Association="Self.FRK_DONDH_NHACC">
+      <End Role="NHACC" EntitySet="NHACCs" />
+      <End Role="DONDH" EntitySet="DONDHs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_DONDH_NHANVIEN" Association="Self.FRK_DONDH_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="DONDH" EntitySet="DONDHs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUXUAT_KHACHHANG" Association="Self.FRK_PHIEUXUAT_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_LOAISP" Association="Self.FRK_SANPHAM_LOAISP">
+      <End Role="LOAISP" EntitySet="LOAISPs" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUNHAP_NHANVIEN" Association="Self.FRK_PHIEUNHAP_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_PHIEUXUAT_NHANVIEN" Association="Self.FRK_PHIEUXUAT_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_TAIKHOAN_NHANVIEN" Association="Self.FRK_TAIKHOAN_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_SANPHAM_NHASX" Association="Self.FRK_SANPHAM_NHASX">
+      <End Role="NHASX" EntitySet="NHASXes" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <AssociationSet Name="FRK_TONKHO_SANPHAM" Association="Self.FRK_TONKHO_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="TONKHO" EntitySet="TONKHOes" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DanhSachhPhieuNhap" ReturnType="Collection(QLBANHANGModel.sp_DanhSachhPhieuNhap_Result)" />
+    <FunctionImport Name="sp_DanhSachTonKho" ReturnType="Collection(QLBANHANGModel.sp_DanhSachTonKho_Result)" />
+    <FunctionImport Name="sp_DELETE_DONDH">
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_KHACHHANG">
+      <Parameter Name="MAKH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_LOAISP">
+      <Parameter Name="MALOAI" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_NHACC">
+      <Parameter Name="MACC" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_NHANVIEN">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_NHASX">
+      <Parameter Name="MASX" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_PHIEUNHAP">
+      <Parameter Name="MAPN" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_PHIEUXUAT">
+      <Parameter Name="MAPX" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETE_SANPHAM">
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLBANHANGModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLBANHANGModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_HienThiDanhSachDonDhChoPhieuNhap" ReturnType="Collection(QLBANHANGModel.sp_HienThiDanhSachDonDhChoPhieuNhap_Result)">
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_HienThiDonDatHang" ReturnType="Collection(String)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_HienThiSlDhChoBangPhieuNhap" ReturnType="Collection(Int32)">
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_HienThiTongSltTheoMaSp" ReturnType="Collection(Int32)">
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_INSERT_CTCN_UPDATE_CHUCNANG">
+      <Parameter Name="MAQH" Mode="In" Type="String" />
+      <Parameter Name="DANHMUC" Mode="In" Type="Boolean" />
+      <Parameter Name="QUANLYBANHANG" Mode="In" Type="Boolean" />
+      <Parameter Name="THONGKE" Mode="In" Type="Boolean" />
+      <Parameter Name="SAOLUU" Mode="In" Type="Boolean" />
+      <Parameter Name="HELP" Mode="In" Type="Boolean" />
+      <Parameter Name="MACN" Mode="In" Type="String" />
+      <Parameter Name="TENCHUCNANG" Mode="In" Type="String" />
+      <Parameter Name="INSERTS" Mode="In" Type="Boolean" />
+      <Parameter Name="UPDATES" Mode="In" Type="Boolean" />
+      <Parameter Name="DELETES" Mode="In" Type="Boolean" />
+      <Parameter Name="SEARCHS" Mode="In" Type="Boolean" />
+      <Parameter Name="PRINTS" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_CTPQ">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="MAQH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_DONDH">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+      <Parameter Name="MACC" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLDH" Mode="In" Type="Int32" />
+      <Parameter Name="NGDH" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_KHACHHANG">
+      <Parameter Name="TENKH" Mode="In" Type="String" />
+      <Parameter Name="NGAYSINH" Mode="In" Type="DateTime" />
+      <Parameter Name="GT" Mode="In" Type="String" />
+      <Parameter Name="SDT" Mode="In" Type="Int32" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="DIACHI" Mode="In" Type="String" />
+      <Parameter Name="NGAYDK" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_LOAISP">
+      <Parameter Name="TENLOAI" Mode="In" Type="String" />
+      <Parameter Name="DVT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_NHACC">
+      <Parameter Name="TENCC" Mode="In" Type="String" />
+      <Parameter Name="DIACHI" Mode="In" Type="String" />
+      <Parameter Name="SDT" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_NhanVien">
+      <Parameter Name="Hoten" Mode="In" Type="String" />
+      <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+      <Parameter Name="Gt" Mode="In" Type="String" />
+      <Parameter Name="Sdt" Mode="In" Type="Int32" />
+      <Parameter Name="Mail" Mode="In" Type="String" />
+      <Parameter Name="Diachi" Mode="In" Type="String" />
+      <Parameter Name="Ngaylam" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_NHASX">
+      <Parameter Name="TENSX" Mode="In" Type="String" />
+      <Parameter Name="QUOCGIA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_PHANQUYEN">
+      <Parameter Name="MAQH" Mode="In" Type="String" />
+      <Parameter Name="TENQH" Mode="In" Type="String" />
+      <Parameter Name="GHICHU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_PHIEUNHAP">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLN" Mode="In" Type="Int32" />
+      <Parameter Name="DONGIA" Mode="In" Type="Decimal" />
+      <Parameter Name="NGAYNHAP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_PHIEUXUAT">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+      <Parameter Name="MAKH" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLX" Mode="In" Type="Int32" />
+      <Parameter Name="NGAYXUAT" Mode="In" Type="DateTime" />
+      <Parameter Name="PHANTRAM" Mode="In" Type="Single" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_SANPHAM">
+      <Parameter Name="TENSP" Mode="In" Type="String" />
+      <Parameter Name="MASX" Mode="In" Type="Int32" />
+      <Parameter Name="MALOAI" Mode="In" Type="Int32" />
+      <Parameter Name="GIATHANH" Mode="In" Type="Decimal" />
+      <Parameter Name="CPU" Mode="In" Type="String" />
+      <Parameter Name="RAM" Mode="In" Type="String" />
+      <Parameter Name="OCUNG" Mode="In" Type="String" />
+      <Parameter Name="MANHINH" Mode="In" Type="String" />
+      <Parameter Name="CARD" Mode="In" Type="String" />
+      <Parameter Name="PORTCONNECT" Mode="In" Type="String" />
+      <Parameter Name="HDT" Mode="In" Type="String" />
+      <Parameter Name="AMTHANH" Mode="In" Type="String" />
+      <Parameter Name="DIAQUANG" Mode="In" Type="String" />
+      <Parameter Name="GIAOTIEP" Mode="In" Type="String" />
+      <Parameter Name="WEBCAM" Mode="In" Type="String" />
+      <Parameter Name="PIN" Mode="In" Type="String" />
+      <Parameter Name="TRONGLUONG" Mode="In" Type="String" />
+      <Parameter Name="BAOHANH" Mode="In" Type="String" />
+      <Parameter Name="NGAYNHAP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_TaiKhoan_NhanVien">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Pass" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_TONKHO">
+      <Parameter Name="NGAYTHANG" Mode="In" Type="DateTime" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLD" Mode="In" Type="Int32" />
+      <Parameter Name="SLN" Mode="In" Type="Int32" />
+      <Parameter Name="SLX" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_PHANQUYEN_NHANVIEN">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="MAQH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Search_HienThiThongTinTaiKhoanNhanVien" ReturnType="Collection(QLBANHANGModel.sp_Search_HienThiThongTinTaiKhoanNhanVien_Result)" />
+    <FunctionImport Name="sp_Search_SanPham_Theo_MaSp" ReturnType="Collection(QLBANHANGModel.sp_Search_SanPham_Theo_MaSp_Result)">
+      <Parameter Name="Masp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Search_ThongTinTaiKhoanNhanVien" ReturnType="Collection(QLBANHANGModel.sp_Search_ThongTinTaiKhoanNhanVien_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="PASS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SearchTaiKhoanNhanVienTheoMaQh" ReturnType="Collection(QLBANHANGModel.sp_SearchTaiKhoanNhanVienTheoMaQh_Result)">
+      <Parameter Name="MAQH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SELECT_CHUCNANG" ReturnType="Collection(QLBANHANGModel.sp_SELECT_CHUCNANG_Result)">
+      <Parameter Name="MACN" Mode="In" Type="String" />
+      <Parameter Name="TENCHUCNANG" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Select_ThongTinDonHangChoPhieuNhap" ReturnType="Collection(Int32)">
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Select_ThongTinPhieuXuatTheoMaDh" ReturnType="Collection(QLBANHANGModel.sp_Select_ThongTinPhieuXuatTheoMaDh_Result)">
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeDonDatHang" ReturnType="Collection(QLBANHANGModel.sp_ThongKeDonDatHang_Result)" />
+    <FunctionImport Name="sp_ThongKeDonDatHangTheoNgayThang" ReturnType="Collection(QLBANHANGModel.sp_ThongKeDonDatHangTheoNgayThang_Result)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeDonHangTheoNhaSx" ReturnType="Collection(QLBANHANGModel.sp_ThongKeDonHangTheoNhaSx_Result)">
+      <Parameter Name="TenSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeDonHangTheoTenLoai" ReturnType="Collection(QLBANHANGModel.sp_ThongKeDonHangTheoTenLoai_Result)">
+      <Parameter Name="TenLoai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuNhap" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuNhap_Result)" />
+    <FunctionImport Name="sp_ThongKePhieuNhapTheoLoaiSp" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuNhapTheoLoaiSp_Result)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuNhapTheoNgayThang" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuNhapTheoNgayThang_Result)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuNhapTheoNhaCungCap" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuNhapTheoNhaCungCap_Result)">
+      <Parameter Name="TenCc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuXuat" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuXuat_Result)" />
+    <FunctionImport Name="sp_ThongKePhieuXuatTtheoLoaiSp" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuXuatTtheoLoaiSp_Result)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuXuatTtheoNgayThang" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuXuatTtheoNgayThang_Result)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuXuatTtheoNhaSx" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuXuatTtheoNhaSx_Result)">
+      <Parameter Name="NhaSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKePhieuXuatTtheoTenSp" ReturnType="Collection(QLBANHANGModel.sp_ThongKePhieuXuatTtheoTenSp_Result)">
+      <Parameter Name="TenSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeTongSoDoDhTheoMaSp" ReturnType="Collection(Int32)">
+      <Parameter Name="Masp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeTonKhoTheoLoaiSp" ReturnType="Collection(QLBANHANGModel.sp_ThongKeTonKhoTheoLoaiSp_Result)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeTonKhoTheoNgayThang" ReturnType="Collection(QLBANHANGModel.sp_ThongKeTonKhoTheoNgayThang_Result)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeTonKhoTheoNhaSx" ReturnType="Collection(QLBANHANGModel.sp_ThongKeTonKhoTheoNhaSx_Result)">
+      <Parameter Name="NhaSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemDonDatHang" ReturnType="Collection(QLBANHANGModel.sp_TimKiemDonDatHang_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemKhachHang" ReturnType="Collection(QLBANHANGModel.sp_TimKiemKhachHang_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemLoaiSanPham" ReturnType="Collection(QLBANHANGModel.sp_TimKiemLoaiSanPham_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemNhaCungCap" ReturnType="Collection(QLBANHANGModel.sp_TimKiemNhaCungCap_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemNhanVien" ReturnType="Collection(QLBANHANGModel.sp_TimKiemNhanVien_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemNhaSanXuat" ReturnType="Collection(QLBANHANGModel.sp_TimKiemNhaSanXuat_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemPhieuNhap" ReturnType="Collection(QLBANHANGModel.sp_TimKiemPhieuNhap_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemPhieuXuat" ReturnType="Collection(QLBANHANGModel.sp_TimKiemPhieuXuat_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemSanPham" ReturnType="Collection(QLBANHANGModel.sp_TimKiemSanPham_Result)">
+      <Parameter Name="Search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhhTongThanhTienPHieuXuatTheoNhaSx" ReturnType="Collection(Decimal)">
+      <Parameter Name="NhaSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTienThua" ReturnType="Collection(Decimal)">
+      <Parameter Name="MAPX" Mode="In" Type="Int32" />
+      <Parameter Name="TIENKHACHDUA" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSlDonDhTheoLoaiSp" ReturnType="Collection(Int32)">
+      <Parameter Name="TenLoai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSlDonDhTheoNgayDatHang" ReturnType="Collection(Int32)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSlDonDhTheoNhaSx" ReturnType="Collection(Int32)">
+      <Parameter Name="NhaSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSltChoTonKho" ReturnType="Collection(Int32)">
+      <Parameter Name="NhaSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSltChoTonKhoTheoLoaiSp" ReturnType="Collection(Int32)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSltChoTonKhoTheoNgayThang" ReturnType="Collection(Int32)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSlxPHieuXuatTheoLoaiSp" ReturnType="Collection(Int32)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSlxPhieuXuatTheoNgayXuat" ReturnType="Collection(Int32)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSlxPhieuXuatTheoNhaSx" ReturnType="Collection(Int32)">
+      <Parameter Name="NhaSx" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSoPhieuConNhapTheoLoaiSp" ReturnType="Collection(Int32)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSoPhieuConNhapTheoNgayNhap" ReturnType="Collection(Int32)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSoPhieuConNhapTheoNhaCungCap" ReturnType="Collection(Int32)">
+      <Parameter Name="NhaCc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSoPhieuNhapTheoLoaiSp" ReturnType="Collection(Int32)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSoPhieuNhapTheoNgayThang" ReturnType="Collection(Int32)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongSoPhieuNhapTheoNhaCungCap" ReturnType="Collection(Int32)">
+      <Parameter Name="NhaCc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongThanhTienPhieuNhapTheoLoaiSp" ReturnType="Collection(Decimal)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongThanhTienPhieuNhapTheoNgayNhap" ReturnType="Collection(Decimal)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongThanhTienPhieuNhapTheoNhaCc" ReturnType="Collection(Decimal)">
+      <Parameter Name="NhaCc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongThanhTienPHieuXuatTheoLoaiSp" ReturnType="Collection(Decimal)">
+      <Parameter Name="LoaiSp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TinhTongThanhTienPhieuXuatTheoNgayXuat" ReturnType="Collection(Decimal)">
+      <Parameter Name="DateTimesOne" Mode="In" Type="DateTime" />
+      <Parameter Name="DateTimesTwo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_DONDH">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+      <Parameter Name="MACC" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLDH" Mode="In" Type="Int32" />
+      <Parameter Name="NGDH" Mode="In" Type="DateTime" />
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_KHACHHANG">
+      <Parameter Name="TENKH" Mode="In" Type="String" />
+      <Parameter Name="NGAYSINH" Mode="In" Type="DateTime" />
+      <Parameter Name="GT" Mode="In" Type="String" />
+      <Parameter Name="SDT" Mode="In" Type="Int32" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="DIACHI" Mode="In" Type="String" />
+      <Parameter Name="NGAYDK" Mode="In" Type="DateTime" />
+      <Parameter Name="MAKH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_LOAISP">
+      <Parameter Name="TENLOAI" Mode="In" Type="String" />
+      <Parameter Name="DVT" Mode="In" Type="String" />
+      <Parameter Name="MALOAI" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_NHACC">
+      <Parameter Name="TENCC" Mode="In" Type="String" />
+      <Parameter Name="DIACHI" Mode="In" Type="String" />
+      <Parameter Name="SDT" Mode="In" Type="Int32" />
+      <Parameter Name="MACC" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_NHANVIEN">
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="NGAYSINH" Mode="In" Type="DateTime" />
+      <Parameter Name="GT" Mode="In" Type="String" />
+      <Parameter Name="SDT" Mode="In" Type="Int32" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="DIACHI" Mode="In" Type="String" />
+      <Parameter Name="NGAYLAM" Mode="In" Type="DateTime" />
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_NHASX">
+      <Parameter Name="TENSX" Mode="In" Type="String" />
+      <Parameter Name="QUOCGIA" Mode="In" Type="String" />
+      <Parameter Name="MASX" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_PHIEUNHAP">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+      <Parameter Name="MADH" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLN" Mode="In" Type="Int32" />
+      <Parameter Name="DONGIA" Mode="In" Type="Decimal" />
+      <Parameter Name="NGAYNHAP" Mode="In" Type="DateTime" />
+      <Parameter Name="MAPN" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_PHIEUXUAT">
+      <Parameter Name="MANV" Mode="In" Type="Int32" />
+      <Parameter Name="MAKH" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+      <Parameter Name="SLX" Mode="In" Type="Int32" />
+      <Parameter Name="PHANTRAM" Mode="In" Type="Single" />
+      <Parameter Name="THANHTIEN" Mode="In" Type="Decimal" />
+      <Parameter Name="NGAYXUAT" Mode="In" Type="DateTime" />
+      <Parameter Name="MAPX" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_SANPHAM">
+      <Parameter Name="TENSP" Mode="In" Type="String" />
+      <Parameter Name="MASX" Mode="In" Type="Int32" />
+      <Parameter Name="MALOAI" Mode="In" Type="Int32" />
+      <Parameter Name="GIATHANH" Mode="In" Type="Decimal" />
+      <Parameter Name="CPU" Mode="In" Type="String" />
+      <Parameter Name="RAM" Mode="In" Type="String" />
+      <Parameter Name="OCUNG" Mode="In" Type="String" />
+      <Parameter Name="MANHINH" Mode="In" Type="String" />
+      <Parameter Name="CARD" Mode="In" Type="String" />
+      <Parameter Name="PORTCONNECT" Mode="In" Type="String" />
+      <Parameter Name="HDT" Mode="In" Type="String" />
+      <Parameter Name="AMTHANH" Mode="In" Type="String" />
+      <Parameter Name="DIAQUANG" Mode="In" Type="String" />
+      <Parameter Name="GIAOTIEP" Mode="In" Type="String" />
+      <Parameter Name="WEBCAM" Mode="In" Type="String" />
+      <Parameter Name="PIN" Mode="In" Type="String" />
+      <Parameter Name="TRONGLUONG" Mode="In" Type="String" />
+      <Parameter Name="BAOHANH" Mode="In" Type="String" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_TAIKHOAN">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="PASS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATE_TONKHO">
+      <Parameter Name="TONGSLD" Mode="In" Type="Int32" />
+      <Parameter Name="MASP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_DanhSachhPhieuNhap_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DVT" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="DONGIA" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="SLN" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="NGAYNHAP" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_DanhSachTonKho_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TONGSLD" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLN" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLX" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_HienThiDanhSachDonDhChoPhieuNhap_Result">
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="Int32" Name="SLN" Nullable="false" />
+    <Property Type="Int32" Name="MAPN" Nullable="false" />
+    <Property Type="Int32" Name="DONGIA" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_Search_HienThiThongTinTaiKhoanNhanVien_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="Password" Nullable="true" />
+    <Property Type="String" Name="HOTEN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MAQH" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_Search_SanPham_Theo_MaSp_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="MASX" Nullable="true" />
+    <Property Type="Int32" Name="MALOAI" Nullable="true" />
+    <Property Type="Decimal" Name="GIATHANH" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CPU" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="RAM" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OCUNG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MANHINH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CARDMANHINH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PORTCONNECT" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="HDT" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AMTHANH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DIAQUANG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="GIAOTIEPMANG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="WEBCAM" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PIN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TRONGLUONG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="BAOHANH" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_Search_ThongTinTaiKhoanNhanVien_Result">
+    <Property Type="String" Name="MAQH" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HOTEN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENQH" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_SearchTaiKhoanNhanVienTheoMaQh_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="Password" Nullable="true" />
+    <Property Type="String" Name="HOTEN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENQH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MAQH" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_SELECT_CHUCNANG_Result">
+    <Property Type="Boolean" Name="INSERTS" Nullable="true" />
+    <Property Type="Boolean" Name="UPDATES" Nullable="true" />
+    <Property Type="Boolean" Name="DELETES" Nullable="true" />
+    <Property Type="Boolean" Name="SEARCHS" Nullable="true" />
+    <Property Type="Boolean" Name="PRINTS" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_Select_ThongTinPhieuXuatTheoMaDh_Result">
+    <Property Type="Int32" Name="MADH" Nullable="false" />
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeDonDatHang_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeDonDatHangTheoNgayThang_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeDonHangTheoNhaSx_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeDonHangTheoTenLoai_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuNhap_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLD" Nullable="true" />
+    <Property Type="Int32" Name="SLN" Nullable="true" />
+    <Property Type="Int32" Name="SLCN" Nullable="true" />
+    <Property Type="Decimal" Name="DONGIA" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="THANTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuNhapTheoLoaiSp_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLD" Nullable="true" />
+    <Property Type="Int32" Name="SLN" Nullable="true" />
+    <Property Type="Int32" Name="SLCN" Nullable="true" />
+    <Property Type="Decimal" Name="DONGIA" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="ThanhTien" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuNhapTheoNgayThang_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLD" Nullable="true" />
+    <Property Type="Int32" Name="SLN" Nullable="true" />
+    <Property Type="Int32" Name="SLCN" Nullable="true" />
+    <Property Type="Decimal" Name="DONGIA" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="ThanhTien" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuNhapTheoNhaCungCap_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLD" Nullable="true" />
+    <Property Type="Int32" Name="SLN" Nullable="true" />
+    <Property Type="Int32" Name="SLCN" Nullable="true" />
+    <Property Type="Decimal" Name="DONGIA" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="ThanhTien" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuXuat_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENKH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLX" Nullable="true" />
+    <Property Type="Decimal" Name="TongTien" Nullable="true" Precision="19" />
+    <Property Type="Single" Name="PHANTRAM" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuXuatTtheoLoaiSp_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENKH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLX" Nullable="true" />
+    <Property Type="Decimal" Name="TongTien" Nullable="true" Precision="19" />
+    <Property Type="Single" Name="PHANTRAM" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuXuatTtheoNgayThang_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENKH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLX" Nullable="true" />
+    <Property Type="Decimal" Name="TongTien" Nullable="true" Precision="19" />
+    <Property Type="Single" Name="PHANTRAM" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuXuatTtheoNhaSx_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENKH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLX" Nullable="true" />
+    <Property Type="Decimal" Name="TongTien" Nullable="true" Precision="19" />
+    <Property Type="Single" Name="PHANTRAM" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKePhieuXuatTtheoTenSp_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TENKH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SLX" Nullable="true" />
+    <Property Type="Decimal" Name="TongTien" Nullable="true" Precision="19" />
+    <Property Type="Single" Name="PHANTRAM" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeTonKhoTheoLoaiSp_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TONGSLD" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLN" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLX" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeTonKhoTheoNgayThang_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TONGSLD" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLN" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLX" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeTonKhoTheoNhaSx_Result">
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TONGSLD" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLN" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLX" Nullable="true" />
+    <Property Type="Int32" Name="TONGSLT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemDonDatHang_Result">
+    <Property Type="Int32" Name="MADH" Nullable="false" />
+    <Property Type="Int32" Name="MANV" Nullable="true" />
+    <Property Type="Int32" Name="MACC" Nullable="true" />
+    <Property Type="DateTime" Name="NGDH" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="Int32" Name="SLDH" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemKhachHang_Result">
+    <Property Type="Int32" Name="MAKH" Nullable="false" />
+    <Property Type="String" Name="TENKH" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NGAYSINH" Nullable="true" />
+    <Property Type="String" Name="GT" Nullable="true" MaxLength="5" />
+    <Property Type="Int32" Name="SDT" Nullable="true" />
+    <Property Type="String" Name="MAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="NGAYDK" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemLoaiSanPham_Result">
+    <Property Type="Int32" Name="MALOAI" Nullable="false" />
+    <Property Type="String" Name="TENLOAI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DVT" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemNhaCungCap_Result">
+    <Property Type="Int32" Name="MACC" Nullable="false" />
+    <Property Type="String" Name="TENCC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="SDT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemNhanVien_Result">
+    <Property Type="Int32" Name="MANV" Nullable="false" />
+    <Property Type="String" Name="HOTEN" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NGAYSINH" Nullable="true" />
+    <Property Type="String" Name="GT" Nullable="true" MaxLength="5" />
+    <Property Type="Int32" Name="SDT" Nullable="true" />
+    <Property Type="String" Name="MAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="NGAYLAM" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemNhaSanXuat_Result">
+    <Property Type="Int32" Name="MASX" Nullable="false" />
+    <Property Type="String" Name="TENSX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="QUOCGIA" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemPhieuNhap_Result">
+    <Property Type="Int32" Name="MAPN" Nullable="false" />
+    <Property Type="Int32" Name="MANV" Nullable="true" />
+    <Property Type="DateTime" Name="NGAYNHAP" Nullable="true" />
+    <Property Type="Int32" Name="MADH" Nullable="true" />
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="Int32" Name="SLN" Nullable="true" />
+    <Property Type="Decimal" Name="DONGIA" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemPhieuXuat_Result">
+    <Property Type="Int32" Name="MAPX" Nullable="false" />
+    <Property Type="Int32" Name="MANV" Nullable="true" />
+    <Property Type="Int32" Name="MAKH" Nullable="true" />
+    <Property Type="DateTime" Name="NGAYXUAT" Nullable="true" />
+    <Property Type="Int32" Name="MASP" Nullable="false" />
+    <Property Type="Int32" Name="SLX" Nullable="true" />
+    <Property Type="Single" Name="PHANTRAM" Nullable="true" />
+    <Property Type="Decimal" Name="THANHTIEN" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemSanPham_Result">
+    <Property Type="Int32" Name="MASP" Nullable="true" />
+    <Property Type="String" Name="CPU" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="RAM" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OCUNG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CARDMANHINH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MANHINH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PORTCONNECT" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="HDT" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AMTHANH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DIAQUANG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="GIAOTIEPMANG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="WEBCAM" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PIN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TRONGLUONG" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="BAOHANH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENSP" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="MASX" Nullable="true" />
+    <Property Type="Int32" Name="MALOAI" Nullable="true" />
+    <Property Type="Decimal" Name="GIATHANH" Nullable="true" Precision="19" />
+  </ComplexType>
+</Schema>
